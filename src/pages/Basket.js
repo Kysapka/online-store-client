@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Bascket = () => {
+const Basket = () => {
     return (
         <div>
-            Bascket
+            Basket
         </div>
     );
 };
 
-export default Bascket;
+export default Basket;
