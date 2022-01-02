@@ -5,6 +5,8 @@ export default class DeviceStore {
         this._types = [
             {id: 1, name: "Холодильники"},
             {id: 2, name: "Смартфоны"},
+            {id: 2, name: "Ноутбуки"},
+            {id: 2, name: "Телевизоры"},
         ]
         this._brands = [
             {id: 1, name: "Samsung"},
@@ -45,26 +47,26 @@ export default class DeviceStore {
     }
 
     setTypes(types) {
-        this.types = types
+        this._types = types
     }
 
     setBrands(brands) {
-        this.brands = brands
+        this._brands = brands
     }
 
     setDevices(devices) {
-        this.devices = devices
+        this._devices = devices
     }
 
-    get Types() {
-        return this.types
+    get types() {
+        return this._types
     }
 
-    get Brands() {
-        return this.brands
+    get brands() {
+        return this._brands
     }
 
-    get Devices() {
-        return this.devices
+    get devices() {
+        return this._devices
     }
 }
