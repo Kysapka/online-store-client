@@ -1,12 +1,13 @@
 import React, {useContext} from 'react';
 import {Context} from "../index";
-import {SHOP_ROUTE} from "../utils/consts";
+import {ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {NavLink} from "react-router-dom";
 import {observer} from "mobx-react-lite";
+import {useNavigate} from "react-router-dom"
 
 
 const NavBar = observer(() => {
-
+const history = useNavigate()
     const {user} = useContext(Context)
 
     return (
@@ -16,8 +17,18 @@ const NavBar = observer(() => {
                 {user.isAuth
                     ?
                     <div style={{color: "white"}} className="ml-auto" id="navbarNav">
-                        <button type="button" className="btn btn-outline-light">Админ панель</button>
-                        <button type="button" className="btn btn-outline-light mx-4">Выйти</button>
+                        <button
+                            onClick={() => history(ADMIN_ROUTE)}
+                            type="button"
+                            className="btn btn-outline-light"
+                        >Админ панель
+                        </button>
+                        <button
+                            onClick={() => history(LOGIN_ROUTE)}
+                            type="button"
+                            className="btn btn-outline-light mx-4"
+                        >Выйти
+                        </button>
                     </div>
                     :
                     <div style={{color: "white"}} className="ml-auto" id="navbarNav">

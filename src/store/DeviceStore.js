@@ -25,21 +25,42 @@ export default class DeviceStore {
                 img: 'https://cdnn21.img.ria.ru/images/07e5/0a/1e/1757022126_0:0:3072:2048_1440x900_80_1_1_9338b7928b524995666533c6f7a262c5.jpg.webp?source-sid=rian_photo'
             },
             {
-                id: 1,
+                id: 2,
                 name: "IPhone 12 pro",
                 price: 25000,
                 rating: 5,
                 img: 'https://cdnn21.img.ria.ru/images/07e5/0a/1e/1757022126_0:0:3072:2048_1440x900_80_1_1_9338b7928b524995666533c6f7a262c5.jpg.webp?source-sid=rian_photo'
             },
             {
-                id: 1,
+                id: 3,
                 name: "IPhone 12 pro",
                 price: 25000,
                 rating: 5,
                 img: 'https://cdnn21.img.ria.ru/images/07e5/0a/1e/1757022126_0:0:3072:2048_1440x900_80_1_1_9338b7928b524995666533c6f7a262c5.jpg.webp?source-sid=rian_photo'
             },
             {
-                id: 1,
+                id: 4,
+                name: "IPhone 12 pro",
+                price: 25000,
+                rating: 5,
+                img: 'https://cdnn21.img.ria.ru/images/07e5/0a/1e/1757022126_0:0:3072:2048_1440x900_80_1_1_9338b7928b524995666533c6f7a262c5.jpg.webp?source-sid=rian_photo'
+            },
+            {
+                id: 5,
+                name: "IPhone 12 pro",
+                price: 25000,
+                rating: 5,
+                img: 'https://cdnn21.img.ria.ru/images/07e5/0a/1e/1757022126_0:0:3072:2048_1440x900_80_1_1_9338b7928b524995666533c6f7a262c5.jpg.webp?source-sid=rian_photo'
+            },
+            {
+                id: 6,
+                name: "IPhone 12 pro",
+                price: 25000,
+                rating: 5,
+                img: 'https://cdnn21.img.ria.ru/images/07e5/0a/1e/1757022126_0:0:3072:2048_1440x900_80_1_1_9338b7928b524995666533c6f7a262c5.jpg.webp?source-sid=rian_photo'
+            },
+            {
+                id: 7,
                 name: "IPhone 12 pro",
                 price: 25000,
                 rating: 5,
