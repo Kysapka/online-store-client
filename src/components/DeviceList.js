@@ -5,7 +5,6 @@ import {observer} from "mobx-react-lite";
 import {Row} from "react-bootstrap";
 
 const DeviceList = observer(() => {
-
     const {device} = useContext(Context)
     return (
         <Row className="d-flex mt-3">
