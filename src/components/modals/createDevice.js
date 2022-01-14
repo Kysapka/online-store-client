@@ -11,6 +11,10 @@ const CreateDevice = ({show, onHide}) => {
         setInfo([...info, {title: '', description: '', number: Date.now()}])
     }
 
+    const removeInfo = (number) => {
+        setInfo(info.filter(i => i.number !== number))
+    }
+
     const ModalWindow = () => {
         return (
 
@@ -50,15 +54,15 @@ const CreateDevice = ({show, onHide}) => {
                                 Добавить новое свойство
                             </button>
                             { info.map(i =>
-                            <Row mt={4}>
+                            <Row  key={i.number} className="mt-4">
                                 <Col md={4}>
-                                    <input className="form-control mt-3" placeholder="Введите название свойства"/>
+                                    <input className="form-control" placeholder="Введите название свойства"/>
                                 </Col>
                                 <Col md={4}>
-                                    <input className="form-control mt-3" placeholder="Введите описание свойства"/>
+                                    <input className="form-control" placeholder="Введите описание свойства"/>
                                 </Col>
                                 <Col md={4}>
-                                    <button className="btn btn-outline-danger mt-3" type="button">Удалить</button>
+                                    <button onClick={() => removeInfo(i.number)} className="btn btn-outline-danger" type="button">Удалить</button>
                                 </Col>
                             </Row>
                             ) }
