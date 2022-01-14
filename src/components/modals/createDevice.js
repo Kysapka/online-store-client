@@ -1,11 +1,15 @@
-import React, {useContext} from 'react';
-import {Form} from "react-bootstrap";
+import React, {useContext, useState} from 'react';
 import {Context} from "../../index";
-import {Dropdown} from "bootstrap";
+import {Col, Row} from "react-bootstrap";
 
 const CreateDevice = ({show, onHide}) => {
 
     const {device} = useContext(Context)
+    const [info, setInfo] = useState([])
+
+    const addInfo = () => {
+        setInfo([...info, {title: '', description: '', number: Date.now()}])
+    }
 
     const ModalWindow = () => {
         return (
@@ -14,18 +18,51 @@ const CreateDevice = ({show, onHide}) => {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="exampleModalLabel">Добавить устройство</h5>
-                        <button type="button" className="btn-close" onClick={onHide}
-                                aria-label="Close"></button>
+                        <button type="button" className="btn-close" onClick={onHide} aria-label="Close" />
                     </div>
                     <div className="modal-body">
-                        <Form>
-                            <Dropdown>
-                                ccc
-                            </Dropdown>
-                                {/*<Form.Control*/}
-                                {/*    placeholder="Введите название устройства"*/}
-                                {/*/>*/}
-                        </Form>
+                        <form>
+                            <div className="dropdown mt-2 mb-2">
+                                <button className="btn btn-secondary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Выберите тип
+                                </button>
+                                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    {device.types.map(type => <li key={type.id}><a className="dropdown-item" href="#">{type.name}</a></li>)}
+                                </ul>
+                            </div>
+                            <div className="dropdown mt-2 mb-2">
+                                <button className="btn btn-secondary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Выберите брэнд
+                                </button>
+                                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    {device.brands.map(brand => <li key={brand.id}><a className="dropdown-item" href="#">{brand.name}</a></li>)}
+                                </ul>
+                            </div>
+                            <input className="form-control mt-3" placeholder="Введите название устройства"/>
+                            <input type="number" className="form-control mt-3" placeholder="Введите стоимость устройства"/>
+                            <input type="file" className="form-control mt-3"/>
+                            <hr/>
+                            <button className="btn btn-outline-dark" type="button"
+                            onClick={addInfo}
+                            >
+                                Добавить новое свойство
+                            </button>
+                            { info.map(i =>
+                            <Row mt={4}>
+                                <Col md={4}>
+                                    <input className="form-control mt-3" placeholder="Введите название свойства"/>
+                                </Col>
+                                <Col md={4}>
+                                    <input className="form-control mt-3" placeholder="Введите описание свойства"/>
+                                </Col>
+                                <Col md={4}>
+                                    <button className="btn btn-outline-danger mt-3" type="button">Удалить</button>
+                                </Col>
+                            </Row>
+                            ) }
+                        </form>
                     </div>
                     <div className="modal-footer">
                         <button className="btn btn-outline-danger" onClick={onHide}>Закрыть</button>
