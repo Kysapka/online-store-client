@@ -1,11 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
 import {NavLink, useLocation} from "react-router-dom";
+import {login, registration} from "../http/userAPI";
 
 
 const Auth = () => {
     const location = useLocation();
     const isLogin = location.pathname === LOGIN_ROUTE
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+
+
+    const click = async(e) => {
+        e.preventDefault()
+        if (isLogin) {
+            const response = await login()
+        } else {
+            const response = await registration(email, password)
+            console.log(response)
+        }
+
+    }
 
     return (
         <div className="container-xxl d-flex justify-content-center align-items-center"
@@ -15,14 +31,14 @@ const Auth = () => {
                 <h2 className="mx-auto mb-4">{isLogin ? 'Авторизация' : 'Регистрация'}</h2>
                 <form>
                     <div className="mb-3">
-                        <input placeholder={"Введите e-mail адрес..."} type="email" className="form-control"
+                        <input value={email} onChange={e => setEmail(e.target.value)} placeholder={"Введите e-mail адрес..."} type="email" className="form-control"
                                id="email"/>
                     </div>
                     <div className="mb-3">
-                        <input placeholder={"Введите ваш пароль..."} type="password" className="form-control"
+                        <input value={password} onChange={e => setPassword(e.target.value)} placeholder={"Введите ваш пароль..."} type="password" className="form-control"
                                id="password"/>
                     </div>
-                    <button type="submit" className="btn w-100 btn-outline-success">{isLogin ? 'Войти' : 'Регистрация'}</button>
+                    <button onClick={click} type="submit" className="btn w-100 btn-outline-success">{isLogin ? 'Войти' : 'Регистрация'}</button>
                     {isLogin ?
                         <div className="mt-3">
                             Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink>
