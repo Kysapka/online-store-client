@@ -1,20 +1,16 @@
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 import NavBar from "./components/NavBar";
-import TestDropDown from "./components/testDropDown";
 
 function App() {
-
-    console.log(process.env.REACT_APP_API_URL)
-
+    const apiUrl = process.env.REACT_APP_API_URL
+    console.log(apiUrl)
     return (
-        // <BrowserRouter>
-        //     <NavBar />
-        //     <AppRouter/>
-        //
-        // </BrowserRouter>
-    <TestDropDown />
-    );
+        <BrowserRouter>
+            <NavBar />
+            <AppRouter/>
+        </BrowserRouter>
+);
 }
 
 export default App;

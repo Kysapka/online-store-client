@@ -1,6 +1,7 @@
 import React from 'react';
-import {Card, Col, Container, Image, Row} from "react-bootstrap";
+
 import star from '../assets/star.png'
+import {Card, Col, Container, Image, Row} from "react-bootstrap";
 
 const DevicePage = () => {
 
