@@ -1,26 +1,35 @@
-import React, {useState} from 'react';
-import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
-import {NavLink, useLocation} from "react-router-dom";
+import React, {useContext, useState} from 'react';
+import {LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import {login, registration} from "../http/userAPI";
+import {observer} from "mobx-react-lite";
+import {Context} from "../index";
 
 
-const Auth = () => {
+const Auth = observer(() => {
+    const {user} = useContext(Context)
     const location = useLocation();
+    const navigate = useNavigate();
     const isLogin = location.pathname === LOGIN_ROUTE
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
 
-
-    const click = async(e) => {
-        e.preventDefault()
-        if (isLogin) {
-            const response = await login()
-        } else {
-            const response = await registration(email, password)
-            console.log(response)
+    const click = async (e) => {
+        try {
+            let data;
+            e.preventDefault()
+            if (isLogin) {
+                data = await login(email, password)
+            } else {
+                data = await registration(email, password)
+            }
+            user.setUser(data)
+            user.setIsAuth(true)
+            navigate(SHOP_ROUTE)
+        } catch (e) {
+            alert(e.rerponse.data.message)
         }
-
     }
 
     return (
@@ -31,14 +40,17 @@ const Auth = () => {
                 <h2 className="mx-auto mb-4">{isLogin ? 'Авторизация' : 'Регистрация'}</h2>
                 <form>
                     <div className="mb-3">
-                        <input value={email} onChange={e => setEmail(e.target.value)} placeholder={"Введите e-mail адрес..."} type="email" className="form-control"
+                        <input value={email} onChange={e => setEmail(e.target.value)}
+                               placeholder={"Введите e-mail адрес..."} type="email" className="form-control"
                                id="email"/>
                     </div>
                     <div className="mb-3">
-                        <input value={password} onChange={e => setPassword(e.target.value)} placeholder={"Введите ваш пароль..."} type="password" className="form-control"
+                        <input value={password} onChange={e => setPassword(e.target.value)}
+                               placeholder={"Введите ваш пароль..."} type="password" className="form-control"
                                id="password"/>
                     </div>
-                    <button onClick={click} type="submit" className="btn w-100 btn-outline-success">{isLogin ? 'Войти' : 'Регистрация'}</button>
+                    <button onClick={click} type="submit"
+                            className="btn w-100 btn-outline-success">{isLogin ? 'Войти' : 'Регистрация'}</button>
                     {isLogin ?
                         <div className="mt-3">
                             Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink>
@@ -53,6 +65,6 @@ const Auth = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Auth;
