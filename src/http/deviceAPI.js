@@ -30,7 +30,7 @@ export const fetchDevices = async() => {
     return data
 }
 
-export const fetchOneDevices = async(id) => {
+export const fetchOneDevice = async(id) => {
     const {data} = await $host.get('api/device/' + id)
     return data
 }

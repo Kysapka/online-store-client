@@ -6,7 +6,7 @@ import DeviceList from "../components/DeviceList";
 import {Col, Container, Row} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
-import {fetchBrands, fetchDevices, fetchTypes} from "../http/DeviceAPI";
+import {fetchBrands, fetchDevices, fetchTypes} from "../http/deviceAPI";
 
 const Shop = observer(() => {
 
