@@ -15,6 +15,8 @@
 /.idea
 
 # misc
+package-lock.json
+yarn.lock
 .env
 .DS_Store
 .env.local
