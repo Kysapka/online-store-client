@@ -4,6 +4,7 @@ import {authRoutes, publicRoutes} from "../routes";
 import {Context} from "../index";
 
 const AppRouter = () => {
+
     const {user} = useContext(Context)
 
     return (
