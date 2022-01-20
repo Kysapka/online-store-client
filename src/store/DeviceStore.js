@@ -65,9 +65,11 @@ export default class DeviceStore {
             //     img: 'https://cdnn21.img.ria.ru/images/07e5/0a/1e/1757022126_0:0:3072:2048_1440x900_80_1_1_9338b7928b524995666533c6f7a262c5.jpg.webp?source-sid=rian_photo'
             // },
         ]
-
         this._selectedType ={}
         this._selectedBrand ={}
+        this._page = 1
+        this._totalCount = 0
+        this._limit = 3
 
         makeAutoObservable(this)
     }
@@ -92,6 +94,18 @@ export default class DeviceStore {
         this._selectedBrand = brand
     }
 
+    setPage(page) {
+        this._page = page
+    }
+
+    setTotalCount(totalCount) {
+        this._totalCount = totalCount
+    }
+
+    setLimit(limit) {
+        this._limit = limit
+    }
+
     get types() {
         return this._types
     }
@@ -105,10 +119,24 @@ export default class DeviceStore {
     }
 
     get selectedType() {
+        this.setPage(1)
         return this._selectedType
     }
 
     get selectedBrand() {
+        this.setPage(1)
         return this._selectedBrand
+    }
+
+    get page() {
+        return this._page
+    }
+
+    get totalCount() {
+        return this._totalCount
+    }
+
+    get limit() {
+        return this._limit
     }
 }
